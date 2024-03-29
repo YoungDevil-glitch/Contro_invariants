@@ -2,8 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def Reach_eulerexplicite(t_0, t_f: float, D: list, f, u , x_0, n =None, h=None):
-    """Implementing euler method on a pertubation scheme.
-      Work well when the pertubation set is finite. Useful for reachability analysis"""
+    """An explicit euler scheme with uncertain disturbance input 
+    for solving initial value problem 
+    Args:
+        t_0 (float): initial timestamp
+        t_f (float): final timestamp
+        D (list): disturbance set discretised 
+        f (function): dynamics
+        u (function): control input
+        x_0 (array[float]): initial value
+        n (int, optional): number of timestamp . Defaults to None.
+        h (float, optional): steps. Defaults to None.
+        n, h can't both be None
+    Returns:
+        Reach : array of Reachable set at various timestamp
+        Timestep: array of Timestamps of evaluations of reachable sets
+    """
     assert n is not None or h is not None, "precise a step or a number of steps"
     if n is not None: 
         h = (t_f - t_0)/n
@@ -20,8 +34,23 @@ def Reach_eulerexplicite(t_0, t_f: float, D: list, f, u , x_0, n =None, h=None):
     return Reach, Timestep
 
 def eulerexplicite(t_0, t_f: float, f, u, d , x_0, n =None, h=None, proj = lambda x: x):
-    """Implementing euler method on a pertubation scheme. 
-    Traditional euler scheme with """
+    """An implementation of the euler explicit scheme for solving ivp problems
+
+    Args:
+        t_0 (float): inittial time
+        t_f (float): final time 
+        f (function): dynamics 
+        u (function ): control input 
+        d (function): disturbance input
+        x_0 (array[float] ): initial value
+        n (int, optional): number of timesteps. Defaults to None.
+        h (float, optional): time steps. Defaults to None.
+        proj (function, optional): Projector onto a set ('help deals with numerical error'). Defaults to identity.
+
+    Returns:
+        Reach : array of Reachable set at various timestamp
+        Timestep: array of Timestamps of evaluations of reachable sets
+    """
     assert n is not None or h is not None, "precise a step or a number of steps"
     if n is not None: 
         h = (t_f - t_0)/n
@@ -37,7 +66,23 @@ def eulerexplicite(t_0, t_f: float, f, u, d , x_0, n =None, h=None, proj = lambd
     return Reach, Timestep
 
 def RK4(t_0, t_f: float, f, u, d , x_0, n =None, h=None, proj = lambda x: x):
-    """Implementing Runge-Kutta method to the pertubed problem"""
+    """An implementation of the rk4 scheme for solving ivp problems
+
+    Args:
+        t_0 (float): initial time
+        t_f (float): final time 
+        f (function): dynamics 
+        u (function ): control input 
+        d (function): disturbance input
+        x_0 (array[float] ): initial value
+        n (int, optional): number of timesteps. Defaults to None.
+        h (float, optional): time steps. Defaults to None.
+        proj (function, optional): Projector onto a set ('help deals with numerical error'). Defaults to identity.
+
+    Returns:
+        Reach : array of Reachable set at various timestamp
+        Timestep: array of Timestamps of evaluations of reachable sets
+    """
     assert n is not None or h is not None, "precise a step or a number of steps"
     if n is not None: 
         h = (t_f - t_0)/n
@@ -59,3 +104,6 @@ def RK4(t_0, t_f: float, f, u, d , x_0, n =None, h=None, proj = lambda x: x):
         new = Reach[-1]+ (k1 + 2*(k2+k3)+ k4)/6
         Reach.append(proj(new))
     return Reach, Timestep
+
+if __name__ == "__main__": 
+    print(True)

@@ -102,3 +102,6 @@ def piecewise_step_function(t,h,S):
     elif n >= m: 
         s = s[m]
     return s
+
+if __name__ == "__main__": 
+    print(True)
