@@ -25,7 +25,7 @@ def computing_grid_ndim(g, x_min, x_max, N):
     Z = X_grid[0].copy() 
     for index,_ in np.ndenumerate( X_grid[0]):
         Z[index] = g(np.array([X_grid[i][index] for i in range(n)]))
-    return X, Y,Z
+    return X,Z
 
 
 def computing_invariant_ndim(g, f, u_min, d_max, epsilon , x_min, x_max ,T, N_euler, proj): 
