@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import time
 from Utils.Lower_closedset import pos_traj,pos_traj_up
 from Utils.invariant import computing_invariant2
+#System Dynamics 
 def f(x, u,w): 
     k = np.sqrt(x)
     h = np.matmul(X_matrix, k) + np.matmul(U_matrix, u) + w_matrix.T*w
@@ -10,6 +11,7 @@ def f(x, u,w):
 def g(x): 
     return ((x[0]<= 30 and x[1] <= 20)) and (x[0]>=0 and x[1]>=0)
 if __name__ =="__main__":
+    #sYSTEMS PARAMETERS
     A = 4.425
     H = 30
     a = 0.476
