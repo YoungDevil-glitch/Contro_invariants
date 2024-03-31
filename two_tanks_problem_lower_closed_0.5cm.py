@@ -29,9 +29,11 @@ if __name__ =="__main__":
     proj = lambda x : np.where(x < 0, 0 , x) 
     T = 25
     h = 5.0
+    #Modify this varaiable for more precision 
+    epsilon = 0.5
     x_0 = np.array([30, 20])    
     tic = time.perf_counter_ns()
-    Traj_feas, Traj_unsafe, Traj_safe = computing_invariant2(g, f, np.array([0,0]), 0, 0.5 , np.array([0,0]),np.array([30,20]), T = T, N_euler = 1000 , proj= proj)
+    Traj_feas, Traj_unsafe, Traj_safe = computing_invariant2(g, f, np.array([0,0]), 0, epsilon  , np.array([0,0]),np.array([30,20]), T = T, N_euler = 1000 , proj= proj)
     toc = time.perf_counter_ns()
     print(f"Time to compute invariant {(toc-tic)/1e6:0.4f} ms")
     x = np.linspace(0,20, 1001)
@@ -60,7 +62,7 @@ if __name__ =="__main__":
         ax.plot(np.array(traj[0])[:,1], np.array(traj[0])[:,0],'-', label = f'({traj[0][0][1]},{traj[0][0][0]})')
 
     axins = ax.inset_axes([0.3, 0.3, 0.4, 0.4])
-    x1, x2, y1, y2 = 17, 20, 18, 31
+    x1, x2, y1, y2 = 18, 20, 18, 31
     axins.set_xlim(x1, x2)
     axins.set_ylim(y1, y2)
     c = axins.pcolormesh(X, Y, Z, cmap='Set3_r')

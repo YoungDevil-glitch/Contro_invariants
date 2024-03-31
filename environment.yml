@@ -1,0 +1,13 @@
+name: controlled_invariant
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - matplotlib=3.5.3
+  - numpy=1.24.4
+  - python=3.8
+  - scipy=1.10
+  - jupyter
+  - spyder 
+  - cpython
+

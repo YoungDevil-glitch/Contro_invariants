@@ -30,6 +30,8 @@ if __name__ =="__main__":
     T = 25
     h = 5.0
     x_0 = np.array([30, 20])    
+    #modify this variable for more precision
+    epsilon = 1 
     tic = time.perf_counter_ns()
     Traj_feas, Traj_unsafe, Traj_safe = computing_invariant2(g, f, np.array([0,0]), 0, 1 , np.array([0,0]),np.array([30,20]), T = T, N_euler = 1000 , proj= proj)
     toc = time.perf_counter_ns()
