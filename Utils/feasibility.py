@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from .solving_equation import eulerexplicite,RK4
 from .Lower_closedset import pos_traj
-
 # Checking if a trajectory is feasible
 
 def is_feasible_euler_case1(x_0,u, d, T, N_euler, f, g, proj = lambda x: x):

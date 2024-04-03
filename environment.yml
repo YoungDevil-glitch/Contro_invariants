@@ -9,5 +9,4 @@ dependencies:
   - scipy=1.10
   - jupyter
   - spyder 
-  - cpython
 
