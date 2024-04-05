@@ -165,7 +165,7 @@ def computing_invariant3(g, f, u_min, u_max, d_max, epsilon , x_min, x_max ,T, N
     X, Y,Z = computing_grid(g, x_min, x_max, N, M)
     U = []
     for i, ui in enumerate(list(u_min)):
-        U.append(np.linspace(ui, u_max[i], N_step*precis))
+        U.append(np.linspace(ui, u_max[i], precis))
     Traj_feas = []
     Traj_unsafe = []
     Traj_safe = [] 
@@ -191,7 +191,7 @@ def computing_invariant3(g, f, u_min, u_max, d_max, epsilon , x_min, x_max ,T, N
                 u = lambda t: u_min
                 d = lambda t: d_max
                 
-                Reach, Timestep, h = is_feasible_rk4_case2(np.array([X[i,j], Y[i,j]]),u, d, T, N_euler, f, g, proj = proj)
+                Reach, Timestep, h = is_feasible_rk4_case2(np.array([X[i,j], Y[i,j]]),u, d, T, N_euler*N_step, f, g, proj = proj)
                 
                 if h == 0:
                     Traj_unsafe.append([Reach.copy(), Timestep.copy()])
